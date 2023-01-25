@@ -7,6 +7,9 @@
 #include <linux/poll.h>
 #include <linux/cgroup-defs.h>
 
+#define timer_setup(a, b, c) setup_timer(a, ((void (*)(unsigned long))b), ((unsigned long)a))
+#define from_timer(var, callback_timer, timer_fieldname) container_of(callback_timer, typeof(*var), timer_fieldname)
+
 struct seq_file;
 struct css_set;
 
